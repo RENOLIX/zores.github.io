@@ -23,8 +23,6 @@ export default function Hero() {
       />
       <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/50 to-black/20" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-      <div className="absolute top-0 left-0 h-full w-1 bg-primary md:w-2" />
-
       <div className="relative z-10 mx-auto max-w-7xl px-4 pt-24 pb-16 sm:px-6 lg:px-8">
         <div className="max-w-2xl">
           <motion.div
