@@ -18,6 +18,7 @@ export default function Hero() {
         style={{
           backgroundImage:
             "url(https://hercules-cdn.com/file_k2YlHdE4nSKSLP9Dz7vEwN3J)",
+          backgroundPosition: "42% center",
         }}
       />
       <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/50 to-black/20" />
