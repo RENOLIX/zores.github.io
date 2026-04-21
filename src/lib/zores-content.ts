@@ -94,6 +94,16 @@ export const excellencePoles = [
       "Confiserie : produits sucres adaptes aux gouts internationaux.",
     ],
   },
+  {
+    title: "Pole detergents & hygiene",
+    tag: "Hygiene",
+    image: `${import.meta.env.BASE_URL}images/about/facility-packaging.jpeg`,
+    points: [
+      "Detergents : lessives liquides et poudres pour usage domestique et professionnel.",
+      "Produits menagers : nettoyants multi-usages, javel et solutions d'entretien.",
+      "Conditionnement export : formats adaptes a la distribution et aux commandes en volume.",
+    ],
+  },
 ];
 
 export const competitiveAdvantages = [
@@ -162,7 +172,7 @@ export const companyHighlights = [
 ];
 
 export const statItems = [
-  { value: "5", label: "Poles d'excellence" },
+  { value: "6", label: "Poles d'excellence" },
   { value: "HACCP", label: "Normes et protocoles" },
   { value: "Alger", label: "Base logistique" },
   { value: "24/7", label: "Suivi commercial" },

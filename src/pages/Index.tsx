@@ -5,6 +5,7 @@ import Intro from "./_components/Intro";
 import Categories from "./_components/Categories";
 import WhyUs from "./_components/WhyUs";
 import Testimonials from "./_components/Testimonials";
+import ContactSection from "./_components/ContactSection";
 import Footer from "./_components/Footer";
 
 export default function Index() {
@@ -17,6 +18,7 @@ export default function Index() {
       <Categories />
       <WhyUs />
       <Testimonials />
+      <ContactSection />
       <Footer />
     </div>
   );
