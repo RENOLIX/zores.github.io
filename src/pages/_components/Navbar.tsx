@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Menu, X } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 const links = [
   { label: "Accueil", href: "#home" },
-  { label: "Produits", href: "#products" },
-  { label: "A propos", href: "#about" },
+  { label: "Nos Pôles", href: "#products" },
+  { label: "À propos", href: "#about" },
   { label: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40);
@@ -22,6 +25,17 @@ export default function Navbar() {
 
   const handleNav = (href: string) => {
     setMobileOpen(false);
+
+    if (href === "#about" && location.pathname !== "/") {
+      navigate("/about");
+      return;
+    }
+
+    if (location.pathname !== "/") {
+      navigate({ pathname: "/", hash: href });
+      return;
+    }
+
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
@@ -33,17 +47,14 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
+          scrolled || location.pathname !== "/"
             ? "bg-white/96 shadow-[0_2px_20px_rgba(0,0,0,0.08)] backdrop-blur-md"
             : "bg-transparent"
         }`}
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between md:h-20">
-            <div
-              className="flex cursor-pointer items-center gap-2"
-              onClick={() => handleNav("#home")}
-            >
+            <Link to="/" className="flex items-center gap-2">
               <img
                 src="https://hercules-cdn.com/file_nJDzeXog7g8SI2gSgTrvmR7j"
                 alt="Zores Export"
@@ -52,20 +63,24 @@ export default function Navbar() {
               <div className="mt-3 flex flex-col justify-center">
                 <span
                   className={`block font-serif text-sm leading-none font-bold transition-colors ${
-                    scrolled ? "text-foreground" : "text-white"
+                    scrolled || location.pathname !== "/"
+                      ? "text-foreground"
+                      : "text-white"
                   }`}
                 >
                   SARL ZORES
                 </span>
                 <span
                   className={`text-[9px] font-medium uppercase tracking-widest transition-colors ${
-                    scrolled ? "text-muted-foreground" : "text-white/70"
+                    scrolled || location.pathname !== "/"
+                      ? "text-muted-foreground"
+                      : "text-white/70"
                   }`}
                 >
                   Export Algerie
                 </span>
               </div>
-            </div>
+            </Link>
 
             <nav className="hidden items-center gap-8 md:flex">
               {links.map((link) => (
@@ -73,7 +88,7 @@ export default function Navbar() {
                   key={link.href}
                   onClick={() => handleNav(link.href)}
                   className={`cursor-pointer text-sm font-medium transition-colors ${
-                    scrolled
+                    scrolled || location.pathname !== "/"
                       ? "text-foreground/80 hover:text-primary"
                       : "text-white/90 hover:text-white"
                   }`}
@@ -83,23 +98,24 @@ export default function Navbar() {
               ))}
             </nav>
 
-            <div className="hidden items-center gap-3 md:flex">
+            <div className="hidden md:flex items-center gap-3">
               <Button
                 onClick={() => handleNav("#contact")}
-                className="cursor-pointer bg-primary px-5 font-medium text-white hover:bg-primary/90"
+                className="cursor-pointer bg-primary hover:bg-primary/90 text-white font-medium px-5"
               >
-                Demander un devis
+                Contact commercial
               </Button>
             </div>
 
             <button
-              className={`cursor-pointer rounded-lg p-2 transition-colors md:hidden ${
-                scrolled ? "text-foreground" : "text-white"
+              className={`md:hidden cursor-pointer p-2 rounded-lg transition-colors ${
+                scrolled || location.pathname !== "/"
+                  ? "text-foreground"
+                  : "text-white"
               }`}
               onClick={() => setMobileOpen(!mobileOpen)}
-              aria-label="Ouvrir le menu"
             >
-              {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
@@ -112,23 +128,23 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="fixed top-16 left-0 right-0 z-40 border-b border-border bg-white px-6 py-6 shadow-xl"
+            className="fixed top-16 left-0 right-0 z-40 bg-white border-b border-border shadow-xl px-6 py-6"
           >
             <nav className="flex flex-col gap-4">
               {links.map((link) => (
                 <button
                   key={link.href}
                   onClick={() => handleNav(link.href)}
-                  className="cursor-pointer text-left text-base font-medium text-foreground transition-colors hover:text-primary"
+                  className="text-base font-medium text-foreground text-left cursor-pointer hover:text-primary transition-colors"
                 >
                   {link.label}
                 </button>
               ))}
               <Button
                 onClick={() => handleNav("#contact")}
-                className="mt-2 w-full cursor-pointer bg-primary text-white"
+                className="cursor-pointer mt-2 bg-primary text-white w-full"
               >
-                Demander un devis
+                Contact commercial
               </Button>
             </nav>
           </motion.div>
