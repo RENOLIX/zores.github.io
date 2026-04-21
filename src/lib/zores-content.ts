@@ -70,7 +70,7 @@ export const excellencePoles = [
   {
     title: "Pole produits laitiers",
     tag: "Laitier",
-    image: `${import.meta.env.BASE_URL}images/about/facility-packaging.jpeg`,
+    image: "https://i.ibb.co/XrkbNm9b/Whats-App-Image-2026-04-19-at-13-55-48.jpg",
     points: [
       "Fromagerie : fromages fondus, pates pressees et specialites locales.",
       "Lait & derives : lait UHT, yaourts et cremes dessert longue conservation.",
@@ -79,7 +79,7 @@ export const excellencePoles = [
   {
     title: "Pole boissons & jus",
     tag: "Boissons",
-    image: `${import.meta.env.BASE_URL}images/about/facility-packaging.jpeg`,
+    image: "https://i.ibb.co/9Hr3Tj5R/Chat-GPT-Image-21-avr-2026-18-20-41.png",
     points: [
       "Jus de fruits : nectars et jus 100% naturels aux saveurs mediterraneennes.",
       "Boissons gazeuses : gammes variees de sodas et eaux minerales algeriennes.",
@@ -88,7 +88,7 @@ export const excellencePoles = [
   {
     title: "Pole biscuiterie & epicerie",
     tag: "Epicerie",
-    image: `${import.meta.env.BASE_URL}images/about/fleet-logistics.jpeg`,
+    image: "https://i.ibb.co/jxSGyq4/Chat-GPT-Image-21-avr-2026-18-17-17.png",
     points: [
       "Biscuiterie : gaufrettes, biscuits secs et fourres.",
       "Confiserie : produits sucres adaptes aux gouts internationaux.",
@@ -97,7 +97,7 @@ export const excellencePoles = [
   {
     title: "Pole detergents & hygiene",
     tag: "Hygiene",
-    image: `${import.meta.env.BASE_URL}images/about/facility-packaging.jpeg`,
+    image: "https://i.ibb.co/Kz3VjSDW/Whats-App-Image-2026-04-19-at-13-51-41.jpg",
     points: [
       "Detergents : lessives liquides et poudres pour usage domestique et professionnel.",
       "Produits menagers : nettoyants multi-usages, javel et solutions d'entretien.",
