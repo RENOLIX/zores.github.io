@@ -1,10 +1,14 @@
+import { useState } from "react";
 import { motion } from "motion/react";
 import { ArrowRight, MapPin, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
+const originalHeroImage = "https://hercules-cdn.com/file_k2YlHdE4nSKSLP9Dz7vEwN3J";
+
 export default function Hero() {
-  const heroImage = `${import.meta.env.BASE_URL}images/about/facility-vegetables.jpeg`;
+  const fallbackHeroImage = `${import.meta.env.BASE_URL}images/about/facility-vegetables.jpeg`;
+  const [heroImage, setHeroImage] = useState(originalHeroImage);
 
   const handleScroll = (href: string) => {
     const el = document.querySelector(href);
@@ -13,12 +17,13 @@ export default function Hero() {
 
   return (
     <section id="home" className="relative flex min-h-screen items-center overflow-hidden">
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url(${heroImage})`,
-          backgroundPosition: "center center",
-        }}
+      <img
+        src={heroImage}
+        alt=""
+        aria-hidden="true"
+        onError={() => setHeroImage(fallbackHeroImage)}
+        className="absolute inset-0 h-full w-full object-cover"
+        style={{ objectPosition: "42% center" }}
       />
       <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/50 to-black/20" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
