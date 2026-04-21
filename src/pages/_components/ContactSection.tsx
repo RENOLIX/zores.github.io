@@ -14,7 +14,7 @@ import {
   president,
 } from "@/lib/zores-content";
 
-const WEB3FORMS_ACCESS_KEY = "CHANGE_WEB3FORMS_KEY_HERE";
+const WEB3FORMS_ACCESS_KEY = "73c26c5f-8baf-42cf-a918-37e6f690bf9c";
 
 const icons = [MapPin, UserRound, Phone, Mail];
 
@@ -51,14 +51,6 @@ export default function ContactSection() {
       setFeedback({
         type: "error",
         text: "Veuillez remplir les champs obligatoires avant l'envoi.",
-      });
-      return;
-    }
-
-    if (WEB3FORMS_ACCESS_KEY === "CHANGE_WEB3FORMS_KEY_HERE") {
-      setFeedback({
-        type: "error",
-        text: "La cle Web3Forms n'est pas encore configuree dans le code.",
       });
       return;
     }
@@ -167,7 +159,7 @@ export default function ContactSection() {
               <p className="mt-4 text-sm leading-7 text-muted-foreground">
                 Pour les demandes de partenariat, de distribution ou de
                 consolidation export, notre equipe vous accompagne de la
-                preparation jusqu'a l'expedition.
+                preparation jusqu&apos;a l&apos;expedition.
               </p>
             </div>
 
@@ -306,11 +298,7 @@ export default function ContactSection() {
                 >
                   {feedback.text}
                 </p>
-              ) : (
-                <p className="text-xs text-muted-foreground">
-                  Le formulaire envoie vers Web3Forms des que la cle est ajoutee.
-                </p>
-              )}
+              ) : null}
             </form>
           </motion.div>
         </div>

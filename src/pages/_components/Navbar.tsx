@@ -6,8 +6,8 @@ import { Button } from "@/components/ui/button";
 
 const links = [
   { label: "Accueil", href: "#home" },
-  { label: "Nos Pôles", href: "#products" },
-  { label: "À propos", href: "#about" },
+  { label: "Nos Poles", href: "#products" },
+  { label: "A propos", href: "/about" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -16,6 +16,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const logoImage = `${import.meta.env.BASE_URL}images/brand/zores-logo.svg`;
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40);
@@ -26,7 +27,7 @@ export default function Navbar() {
   const handleNav = (href: string) => {
     setMobileOpen(false);
 
-    if (href === "#about" && location.pathname !== "/") {
+    if (href === "/about") {
       navigate("/about");
       return;
     }
@@ -56,9 +57,9 @@ export default function Navbar() {
           <div className="flex h-16 items-center justify-between md:h-20">
             <Link to="/" className="flex items-center gap-2">
               <img
-                src="https://hercules-cdn.com/file_nJDzeXog7g8SI2gSgTrvmR7j"
+                src={logoImage}
                 alt="Zores Export"
-                className="h-12 w-auto object-contain"
+                className="h-12 w-12 rounded-xl bg-white/90 p-1 object-contain shadow-sm"
               />
               <div className="mt-3 flex flex-col justify-center">
                 <span
@@ -98,24 +99,24 @@ export default function Navbar() {
               ))}
             </nav>
 
-            <div className="hidden md:flex items-center gap-3">
+            <div className="hidden items-center gap-3 md:flex">
               <Button
                 onClick={() => handleNav("#contact")}
-                className="cursor-pointer bg-primary hover:bg-primary/90 text-white font-medium px-5"
+                className="cursor-pointer bg-primary px-5 font-medium text-white hover:bg-primary/90"
               >
                 Contact commercial
               </Button>
             </div>
 
             <button
-              className={`md:hidden cursor-pointer p-2 rounded-lg transition-colors ${
+              className={`rounded-lg p-2 transition-colors md:hidden ${
                 scrolled || location.pathname !== "/"
                   ? "text-foreground"
                   : "text-white"
               }`}
               onClick={() => setMobileOpen(!mobileOpen)}
             >
-              {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
         </div>
@@ -128,21 +129,21 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="fixed top-16 left-0 right-0 z-40 bg-white border-b border-border shadow-xl px-6 py-6"
+            className="fixed top-16 left-0 right-0 z-40 border-b border-border bg-white px-6 py-6 shadow-xl"
           >
             <nav className="flex flex-col gap-4">
               {links.map((link) => (
                 <button
                   key={link.href}
                   onClick={() => handleNav(link.href)}
-                  className="text-base font-medium text-foreground text-left cursor-pointer hover:text-primary transition-colors"
+                  className="cursor-pointer text-left text-base font-medium text-foreground transition-colors hover:text-primary"
                 >
                   {link.label}
                 </button>
               ))}
               <Button
                 onClick={() => handleNav("#contact")}
-                className="cursor-pointer mt-2 bg-primary text-white w-full"
+                className="mt-2 w-full cursor-pointer bg-primary text-white"
               >
                 Contact commercial
               </Button>
