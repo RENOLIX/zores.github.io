@@ -1,14 +1,10 @@
-import { useState } from "react";
 import { motion } from "motion/react";
 import { ArrowRight, MapPin, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
-const originalHeroImage = "https://hercules-cdn.com/file_k2YlHdE4nSKSLP9Dz7vEwN3J";
-
 export default function Hero() {
-  const fallbackHeroImage = `${import.meta.env.BASE_URL}images/about/facility-vegetables.jpeg`;
-  const [heroImage, setHeroImage] = useState(originalHeroImage);
+  const heroImage = `${import.meta.env.BASE_URL}images/about/facility-vegetables.jpeg`;
 
   const handleScroll = (href: string) => {
     const el = document.querySelector(href);
@@ -21,7 +17,6 @@ export default function Hero() {
         src={heroImage}
         alt=""
         aria-hidden="true"
-        onError={() => setHeroImage(fallbackHeroImage)}
         className="absolute inset-0 h-full w-full object-cover"
         style={{ objectPosition: "42% center" }}
       />

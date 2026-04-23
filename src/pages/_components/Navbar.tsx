@@ -11,15 +11,12 @@ const links = [
   { label: "Contact", href: "#contact" },
 ];
 
-const originalLogoImage = "https://hercules-cdn.com/file_nJDzeXog7g8SI2gSgTrvmR7j";
-
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const fallbackLogoImage = `${import.meta.env.BASE_URL}images/brand/zores-logo.svg`;
-  const [logoImage, setLogoImage] = useState(originalLogoImage);
+  const logoImage = `${import.meta.env.BASE_URL}favicon-512.png`;
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40);
@@ -62,8 +59,7 @@ export default function Navbar() {
               <img
                 src={logoImage}
                 alt="Zores Export"
-                onError={() => setLogoImage(fallbackLogoImage)}
-                className="h-12 w-auto object-contain"
+                className="h-12 w-12 rounded-xl bg-white/90 object-contain shadow-sm"
               />
               <div className="mt-3 flex flex-col justify-center">
                 <span
